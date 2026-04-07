@@ -2,9 +2,43 @@ const playerMarker = 'X'
 const computerMarker = 'O'
 let winner = null
 
+let width = 3
+
 function checkWinner(marker) {
-	console.warn('checkWinner has not been implemented yet')
+
+	const cells = getCells()
+
+	//Check for vertical wins
+	for (let i = 0; i < width; i++) {
+		
+		if (cells[i] == "") continue
+
+		if (cells[i].textContent == cells[i + width].textContent == cells[i + width * 2].textContent) {
+
+			console.log("Win")
+
+			return true
+		}
+	}
+
+	return false
 }
+
+/*
+
+xxx
+___
+___
+
+x__
+_x_
+__x
+
+x__
+x__
+x__
+
+*/
 
 function getCells() {
 	return Array.from(document.querySelectorAll('.cell'))
