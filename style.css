@@ -1,0 +1,14 @@
+body {
+	margin: 0;
+	padding: 16px;
+}
+
+#board {
+	display: grid;
+	grid-template-rows: repeat(3, 1fr);
+	grid-template-columns: repeat(3, 1fr);
+
+	width: 100%;
+	max-width: 380px;
+	aspect-ratio: 1/1;
+}
