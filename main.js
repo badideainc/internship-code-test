@@ -17,13 +17,10 @@ function checkWinner(marker) {
 
 		//If matches exit early as already one
 		if (match) {
-			console.log("Win")
-			return true
+			winner = marker
+			return
 		}
 	})
-
-	//No matches so return false
-	return false
 }
 
 //Use a string pattern to match an acceptable grid position
@@ -100,6 +97,8 @@ function reset() {
 		cell.textContent = ''
 		cell.disabled = false
 	})
+
+	winner = null
 }
 
 function handleCellClick(e) {
@@ -121,6 +120,9 @@ function handleCellClick(e) {
 		// simulate the computer's next turn and check to see if they’ve won
 		simulateComputerTurn()
 		checkWinner(computerMarker)
+	}
+	else {
+		setWinner(winner)
 	}
 }
 
