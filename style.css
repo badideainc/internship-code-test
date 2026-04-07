@@ -18,6 +18,7 @@ body {
 .cell {
 	background-image: url(images/cell_light.png);
 	background-size: contain;
+	font-size: x-large;
 }
 
 .winButton:disabled {
