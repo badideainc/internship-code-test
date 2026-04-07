@@ -93,7 +93,7 @@ function setWinner(marker, winPattern) {
 	cells.forEach((cell) => {cell.disabled = true})
 
 	// reveal the winner
-	document.getElementById('status').textContent = `${marker}’s wins!`
+	updateState(`${marker}’s wins!`)
 
 	// update the winner variable so that handleCellClick knows not to continue
 	winner = marker
@@ -104,7 +104,7 @@ function setWinner(marker, winPattern) {
 function setDraw() {
 	getCells().forEach((cell) => (cell.disabled = true))
 
-	document.getElementById('status').textContent = `Draw!`
+	updateState(`Draw!`)
 }
 
 function addScore(marker) {
@@ -121,6 +121,10 @@ function addScore(marker) {
 function updateScoreUI() {
 	document.getElementById('playerScore').textContent = `Player (${playerMarker}): ${playerScore}`
 	document.getElementById('computerScore').textContent = `Robit (${computerMarker}): ${computerScore}`
+}
+
+function updateState(message) {
+	document.getElementById('status').textContent = message
 }
 
 function simulateComputerTurn() {
