@@ -82,7 +82,7 @@ function setWinner(marker, winPattern) {
 	//Show winning pattern
 	for (let i = 0; i < cells.length; i++) {
 		if (winPattern[i] == "@") {
-			cells[i].textContent = "W"			
+			cells[i].classList.add("winButton")
 		}
 	}
 
@@ -123,6 +123,8 @@ function reset() {
 	getCells().forEach((cell) => {
 		cell.textContent = ''
 		cell.disabled = false
+
+		cell.classList.remove("winButton")
 	})
 
 	winner = null
