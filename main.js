@@ -11,6 +11,8 @@ function checkWinner(marker) {
 
 	const cells = getCells()
 
+	let winPattern = null
+
 	//Check each pattern
 	patterns.forEach((pattern) => {
 		let match = matchPattern(cells, marker, pattern)
@@ -18,9 +20,12 @@ function checkWinner(marker) {
 		//If matches exit early as already one
 		if (match) {
 			winner = marker
+			winPattern = pattern
 			return
 		}
 	})
+
+	return winPattern
 }
 
 //Use a string pattern to match an acceptable grid position
@@ -70,9 +75,20 @@ function getCells() {
 	return Array.from(document.querySelectorAll('.cell'))
 }
 
-function setWinner(marker) {
-	// disable all the cells to prevent further play
-	getCells().forEach((cell) => (cell.disabled = true))
+function setWinner(marker, winPattern) {
+
+	let cells = getCells()	
+
+	console.log(winPattern)
+
+	for (let i = 0; i < patterns.length; i++) {
+		if (winPattern[i] == "@") {
+			cells[i].textContent = "W"
+		}
+	}
+
+// disable all the cells to prevent further play
+	cells.forEach((cell) => {cell.disabled = true})
 
 	// reveal the winner
 	document.getElementById('status').textContent = `${marker}’s wins!`
@@ -114,15 +130,16 @@ function handleCellClick(e) {
 	// the cell was not filled: fill the cell with the player's marker and check
 	// to see if they have won the game
 	targetCell.textContent = playerMarker
-	checkWinner(playerMarker)
+	let pattern = checkWinner(playerMarker)
 
 	if (!winner) {
 		// simulate the computer's next turn and check to see if they’ve won
 		simulateComputerTurn()
-		checkWinner(computerMarker)
+		pattern = checkWinner(computerMarker)
 	}
-	else {
-		setWinner(winner)
+	
+	if (winner) {
+		setWinner(winner, pattern)
 	}
 }
 
