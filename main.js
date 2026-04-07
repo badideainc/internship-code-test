@@ -110,6 +110,7 @@ function simulateComputerTurn() {
 
 	if (emptyCells.length === 0) {
 		setDraw()
+		return
 	}
 
 	const randomEmptyCellIndex = Math.ceil(Math.random() * emptyCells.length - 1)
