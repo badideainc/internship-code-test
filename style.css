@@ -16,3 +16,10 @@ body {
 .winButton:disabled {
 	background-color: red;
 }
+
+#scoreboard>ul {
+	list-style: none;
+	display: flex;
+	padding: 0px;
+	margin: 0px;
+}
