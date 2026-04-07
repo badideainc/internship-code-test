@@ -2,12 +2,27 @@ const playerMarker = 'X'
 const computerMarker = 'O'
 let winner = null
 
+let patterns = ["@@@~~~~~~", "~~~@@@~~~", "~~~~~~@@@",
+	"@~~@~~@~~", "~@~~@~~@~", "~~@~~@~~@",
+	"@~~~@~~~@", "~~@~@~@~~"
+]
+
 function checkWinner(marker) {
 
 	const cells = getCells()
 
-	console.log(matchPattern(cells, marker, "@@@~~~~~~"))
+	//Check each pattern
+	patterns.forEach((pattern) => {
+		let match = matchPattern(cells, marker, pattern)
 
+		//If matches exit early as already one
+		if (match) {
+			console.log("Win")
+			return true
+		}
+	})
+
+	//No matches so return false
 	return false
 }
 
