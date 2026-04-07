@@ -1,5 +1,5 @@
-const playerMarker = 'X'
-const computerMarker = 'O'
+let playerMarker = 'X'
+let computerMarker = 'O'
 let winner = null
 
 let patterns = ["@@@~~~~~~", "~~~@@@~~~", "~~~~~~@@@",
@@ -143,6 +143,17 @@ function simulateComputerTurn() {
 	randomEmptyCell.textContent = computerMarker
 }
 
+function flipMarkers() {
+	let temp = playerMarker
+
+	playerMarker = computerMarker
+	computerMarker = temp
+
+	document.getElementById('playerMarker').textContent = playerMarker
+
+	updateScoreUI()
+}
+
 function reset() {
 	document.getElementById('status').textContent = ''
 	getCells().forEach((cell) => {
@@ -184,5 +195,6 @@ function handleCellClick(e) {
 // add event listeners
 getCells().forEach((cell) => cell.addEventListener('click', handleCellClick))
 document.getElementById('reset').addEventListener('click', reset)
+document.getElementById('playerMarker').addEventListener('click', flipMarkers)
 
 updateScoreUI()
