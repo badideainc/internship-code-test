@@ -106,7 +106,7 @@ function handleCellClick(e) {
 	const targetCell = e.target
 	// check if the cell has already been filled, do nothing if it has
 	const cellMarker = targetCell.textContent
-	if (cellMarker === playerMarker) {
+	if (cellMarker !== "") {
 		// do nothing, the player needs to click an empty cell
 		return
 	}
