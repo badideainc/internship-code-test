@@ -7,6 +7,9 @@ let patterns = ["@@@~~~~~~", "~~~@@@~~~", "~~~~~~@@@",
 	"@~~~@~~~@", "~~@~@~@~~"
 ]
 
+let playerScore = 0
+let computerScore = 0
+
 function checkWinner(marker) {
 
 	const cells = getCells()
@@ -94,12 +97,25 @@ function setWinner(marker, winPattern) {
 
 	// update the winner variable so that handleCellClick knows not to continue
 	winner = marker
+
+	addScore(marker)
 }
 
 function setDraw() {
 	getCells().forEach((cell) => (cell.disabled = true))
 
 	document.getElementById('status').textContent = `Draw!`
+}
+
+function addScore(marker) {
+	if (marker === playerMarker) {
+		playerScore++
+		document.getElementById('playerScore').textContent = `Player ${playerScore}`
+	} 
+	else {
+		computerScore++
+		document.getElementById('computerScore').textContent = `Robit ${computerScore}`
+	}
 }
 
 function simulateComputerTurn() {
@@ -123,7 +139,7 @@ function reset() {
 	getCells().forEach((cell) => {
 		cell.textContent = ''
 		cell.disabled = false
-
+ 
 		cell.classList.remove("winButton")
 	})
 
