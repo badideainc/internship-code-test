@@ -78,6 +78,10 @@ function getCells() {
 	return Array.from(document.querySelectorAll('.cell'))
 }
 
+function getMarkerButton() {
+	return document.getElementById('playerMarker')
+}
+
 function setWinner(marker, winPattern) {
 
 	let cells = getCells()	
@@ -149,7 +153,7 @@ function flipMarkers() {
 	playerMarker = computerMarker
 	computerMarker = temp
 
-	document.getElementById('playerMarker').textContent = playerMarker
+	getMarkerButton().textContent = playerMarker
 
 	updateScoreUI()
 }
@@ -163,10 +167,14 @@ function reset() {
 		cell.classList.remove("winButton")
 	})
 
+	getMarkerButton().disabled = false
 	winner = null
 }
 
 function handleCellClick(e) {
+
+	getMarkerButton().disabled = true
+
 	// what cell did the player click?
 	const targetCell = e.target
 	// check if the cell has already been filled, do nothing if it has
