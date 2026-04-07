@@ -109,13 +109,18 @@ function setDraw() {
 
 function addScore(marker) {
 	if (marker === playerMarker) {
-		playerScore++
-		document.getElementById('playerScore').textContent = `Player: ${playerScore}`
+		playerScore++		
 	} 
 	else {
-		computerScore++
-		document.getElementById('computerScore').textContent = `Robit: ${computerScore}`
+		computerScore++		
 	}
+
+	updateScoreUI()
+}
+
+function updateScoreUI() {
+	document.getElementById('playerScore').textContent = `Player (${playerMarker}): ${playerScore}`
+	document.getElementById('computerScore').textContent = `Robit (${computerMarker}): ${computerScore}`
 }
 
 function simulateComputerTurn() {
@@ -175,3 +180,5 @@ function handleCellClick(e) {
 // add event listeners
 getCells().forEach((cell) => cell.addEventListener('click', handleCellClick))
 document.getElementById('reset').addEventListener('click', reset)
+
+updateScoreUI()
