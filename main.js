@@ -2,29 +2,43 @@ const playerMarker = 'X'
 const computerMarker = 'O'
 let winner = null
 
-let width = 3
-
 function checkWinner(marker) {
 
 	const cells = getCells()
 
-	//Check for vertical wins
-	for (let i = 0; i < width; i++) {
-		
-		if (cells[i] == "") continue
-
-		if (cells[i].textContent == cells[i + width].textContent == cells[i + width * 2].textContent) {
-
-			console.log("Win")
-
-			return true
-		}
-	}
+	console.log(matchPattern(cells, marker, "@@@~~~~~~"))
 
 	return false
 }
 
+//Use a string pattern to match an acceptable grid position
+function matchPattern(cells, marker, pattern) {
+
+	let score = 0
+
+	for (let i = 0; i < cells.length; i++) {
+
+		//If non empty and match pattern, increment score
+		if (cells[i].textContent == marker && pattern[i] == "@") {
+			score++
+		}
+	}
+
+	//Make array
+	let patternArray = pattern.split("")
+
+	//Filter for only "@"
+	let patternAccepts = patternArray.filter((patternChar) => patternChar == "@")
+
+	//If a winning pattern, should have the same number of @ as the pattern
+	return score == patternAccepts.length
+}
+
 /*
+
+@@@______
+___@@@___
+______@@@
 
 xxx
 ___
