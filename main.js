@@ -79,11 +79,10 @@ function setWinner(marker, winPattern) {
 
 	let cells = getCells()	
 
-	console.log(winPattern)
-
-	for (let i = 0; i < patterns.length; i++) {
+	//Show winning pattern
+	for (let i = 0; i < cells.length; i++) {
 		if (winPattern[i] == "@") {
-			cells[i].textContent = "W"
+			cells[i].textContent = "W"			
 		}
 	}
 
@@ -108,6 +107,7 @@ function simulateComputerTurn() {
 	const cells = getCells()
 	const emptyCells = cells.filter((cell) => cell.textContent === '')
 
+	//No cells left to play but hasn't won, so draw
 	if (emptyCells.length === 0) {
 		setDraw()
 		return
