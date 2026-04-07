@@ -110,11 +110,11 @@ function setDraw() {
 function addScore(marker) {
 	if (marker === playerMarker) {
 		playerScore++
-		document.getElementById('playerScore').textContent = `Player ${playerScore}`
+		document.getElementById('playerScore').textContent = `Player: ${playerScore}`
 	} 
 	else {
 		computerScore++
-		document.getElementById('computerScore').textContent = `Robit ${computerScore}`
+		document.getElementById('computerScore').textContent = `Robit: ${computerScore}`
 	}
 }
 
