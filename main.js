@@ -97,12 +97,22 @@ function setWinner(marker, winPattern) {
 	winner = marker
 }
 
+function setDraw() {
+	getCells().forEach((cell) => (cell.disabled = true))
+
+	document.getElementById('status').textContent = `Draw!`
+}
+
 function simulateComputerTurn() {
 	// find the empty cells, pick a random one and then place a marker
 	const cells = getCells()
 	const emptyCells = cells.filter((cell) => cell.textContent === '')
-	const randomEmptyCellIndex = Math.ceil(Math.random() * emptyCells.length - 1)
 
+	if (emptyCells.length === 0) {
+		setDraw()
+	}
+
+	const randomEmptyCellIndex = Math.ceil(Math.random() * emptyCells.length - 1)
 	const randomEmptyCell = emptyCells[randomEmptyCellIndex]
 	randomEmptyCell.textContent = computerMarker
 }
