@@ -14,7 +14,7 @@ body {
 }
 
 .winButton:disabled {
-	background-color: red;
+	color: red;
 }
 
 #scoreboard>ul {
