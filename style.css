@@ -50,6 +50,14 @@ body {
 	padding: 20px;
 }
 
+#status {
+	display: flex;
+	align-self: center;
+	justify-content: center;
+	padding: 20px;
+	font-size: large;
+}
+
 
 .score {
 	display: inline-flex;
