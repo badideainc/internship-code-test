@@ -23,7 +23,7 @@ body {
 
 .cell {
 	background-image: url(images/cell_light.png);
-	background-size: contain;
+	background-size: cover;
 	font-size: x-large;
 }
 
@@ -69,7 +69,8 @@ body {
 	height: 150px;
 	font-size: large;
 	text-align: center;
-	background-color: lightblue;
+	background-image: url(images/cell_light.png);
+	background-size: cover;
 }
 
 .scoreText {
