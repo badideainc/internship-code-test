@@ -78,8 +78,8 @@ function getCells() {
 	return Array.from(document.querySelectorAll('.cell'))
 }
 
-function getMarkerButton() {
-	return document.getElementById('playerMarker')
+function getMarkerButtons() {
+	return Array.from(document.querySelectorAll('.scoreMarker'))
 }
 
 function setWinner(marker, winPattern) {
@@ -156,8 +156,6 @@ function flipMarkers() {
 	playerMarker = computerMarker
 	computerMarker = temp
 
-	getMarkerButton().textContent = playerMarker
-
 	updateScoreUI()
 }
 
@@ -170,13 +168,13 @@ function reset() {
 		cell.classList.remove("winButton")
 	})
 
-	getMarkerButton().disabled = false
+	getMarkerButtons().forEach((button) => button.disabled = false)
 	winner = null
 }
 
 function handleCellClick(e) {
 
-	getMarkerButton().disabled = true
+	getMarkerButtons().forEach((button) => button.disabled = true)
 
 	// what cell did the player click?
 	const targetCell = e.target
@@ -207,5 +205,6 @@ function handleCellClick(e) {
 getCells().forEach((cell) => cell.addEventListener('click', handleCellClick))
 document.getElementById('reset').addEventListener('click', reset)
 document.getElementById('playerMarker').addEventListener('click', flipMarkers)
+document.getElementById('computerMarker').addEventListener('click', flipMarkers)
 
 updateScoreUI()
