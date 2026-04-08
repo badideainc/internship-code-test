@@ -40,7 +40,16 @@ body {
 
 #reset {
 	padding: 5px;
+	
 }
+
+#resetDiv {
+	display: flex;
+	align-self: center;
+	justify-content: center;
+	padding: 20px;
+}
+
 
 .score {
 	display: inline-flex;
