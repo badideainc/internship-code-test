@@ -123,8 +123,11 @@ function addScore(marker) {
 }
 
 function updateScoreUI() {
-	document.getElementById('playerScore').textContent = `Player (${playerMarker}): ${playerScore}`
-	document.getElementById('computerScore').textContent = `Robit (${computerMarker}): ${computerScore}`
+	document.getElementById('playerMarker').textContent = `${playerMarker}`
+	document.getElementById('playerScore').textContent = `${playerScore}`
+
+	document.getElementById('computerMarker').textContent = `${computerMarker}`
+	document.getElementById('computerScore').textContent = `${computerScore}`
 }
 
 function updateState(message) {
