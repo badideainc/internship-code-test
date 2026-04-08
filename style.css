@@ -31,13 +31,6 @@ body {
 	color: red;
 }
 
-#scoreboard>ul {
-	list-style: none;
-	display: flex;
-	padding: 0px;
-	margin: 0px;
-}
-
 #reset {
 	padding: 5px;
 	
@@ -56,6 +49,12 @@ body {
 	justify-content: center;
 	padding: 20px;
 	font-size: large;
+}
+
+#scoreboard {
+	display: flex;
+	justify-content: center;
+	align-self: center;
 }
 
 
